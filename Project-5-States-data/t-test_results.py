@@ -48,7 +48,7 @@ class sampleSplit():
         samples.index = ["median","iq_range_mean_point","m","minmax_mean_point"]
         return samples
 
-states = pd.read_excel("Project-5-States-data\State data.xlsx")
+states = pd.read_excel("State data.xlsx")
 states.columns = ['Acronym', 'Population', 'Income', 'Illiteracy', 'Life.Exp',
        'Murder', 'HS.Grad', 'Frost', 'Area']
 states["Density"] = states.Population/states.Area
