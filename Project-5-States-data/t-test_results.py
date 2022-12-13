@@ -48,7 +48,8 @@ class sampleSplit():
         samples.index = ["median","iq_range_mean_point","m","minmax_mean_point"]
         return samples
 
-states = pd.read_excel("https://github.com/LeonardoAcquaroli/extra-project-on-t-test/blob/816507fd0698a812563400c47fbddca317ba5c1f/Project-5-States-data/State_data.xlsx", engine="openpyxl")
+#states = pd.read_excel("https://github.com/LeonardoAcquaroli/extra-project-on-t-test/blob/816507fd0698a812563400c47fbddca317ba5c1f/Project-5-States-data/State_data.xlsx", engine="openpyxl")
+states = pd.read_excel("State_data.xlsx")
 states.columns = ['Acronym', 'Population', 'Income', 'Illiteracy', 'Life.Exp',
        'Murder', 'HS.Grad', 'Frost', 'Area']
 states["Density"] = states.Population/states.Area
