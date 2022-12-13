@@ -1,0 +1,5 @@
+cd "C:\Users\leoac\OneDrive - Università degli Studi di Milano\Unimi\Subjects\Statistics\Extra project\Project-5-States-data"
+
+streamlit run t-test_results-Copia_locale.py
+
+### TERMINAL MUST BE OPENED AND CONNECTED (to rerun everytime the app) while speaking ###
