@@ -45,7 +45,7 @@ class sampleSplit():
         samples[f"high_{self.col}_mean"] = [h_samples[i].mean() for i in range(len(splitters))]#inserting target mean on high col
         samples[f"low_{self.col}_var"] = [l_samples[i].var() for i in range(len(splitters))]   #inserting target mean on low col
         samples[f"high_{self.col}_var"] = [h_samples[i].var() for i in range(len(splitters))]  #inserting target mean on high col
-        samples.index = ["median","iq_range_mean_point","m","minmax_mean_point"]
+        samples.index = ["median","iqr_mid_point","mean","range_mid_point"]
         return samples
 
 states = pd.read_excel("State_data.xlsx")
