@@ -15,9 +15,9 @@ class sampleSplit():
     def __init__(self, df, col: str, target: str):
         # initialize the splitters
         self.median = df[col].median()
-        self.iq_range_mean_point = (((df[col].quantile([0.25,0.75])).iloc[0] + (df[col].quantile([0.25,0.75])).iloc[1]))/2
-        self.m = df[col].mean()
-        self.minmax_mean_point = (df[col].max() + df[col].min())/2
+        self.iqr_mean_point = (((df[col].quantile([0.25,0.75])).iloc[0] + (df[col].quantile([0.25,0.75])).iloc[1]))/2
+        self.mean = df[col].mean()
+        self.range_mean_point = (df[col].max() + df[col].min())/2
         # initialize the arguments
         self.df = df
         self.col = col
@@ -25,7 +25,7 @@ class sampleSplit():
         
     def split(self):
         # create the splitters
-        splitters = [self.median,self.iq_range_mean_point,self.m,self.minmax_mean_point]
+        splitters = [self.median,self.iqr_mean_point,self.mean,self.range_mean_point]
 
         # for loop that populates two lists that will be the column of the resulting df
         # the lists will be composed of the low and high samples divided by the splitters
@@ -68,7 +68,7 @@ def f_test(a,b):
         return F, p_value, "f_p_value < 0.05 Variances are different"
 
 variables = ["Income","Illiteracy","Density"]
-splitters = ['median','iq_range_mean_point','m','minmax_mean_point']
+splitters = ['median','iqr_mean_point','mean','range_mean_point']
 mainlist = [] # list for the main dataframe of bigdfs
 
 Z = np.zeros((3,4)) # create the df cells to fill them with the tuples of p_values (f,t) by the .loc[variable][splitter]
@@ -154,8 +154,3 @@ else: # Welch's t-test (Unequal var)
         st.write(f"**ACCEPTED the null hypotesis of non-statistical difference.**")
     else: # different means
         st.write(f"**REJECTED the null hypotesis of non-statistical difference.**")
-
-# Describe all the three variables:
-# Income: 
-# Illiteracy: We always reject
-# Density: Start from minmax (REJECTED) and then proceed to more "central" splitters in which we ACCEPT
